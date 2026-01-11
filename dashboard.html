@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionQuery - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1 class="app-title">VisionQuery</h1>
+            <div class="header-right">
+                <span id="userEmail" class="user-email">Loading...</span>
+                <button id="logoutButton" class="logout-button">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <!-- Image Upload Section -->
+        <section class="dashboard-section">
+            <h2 class="section-title">📤 Upload Image</h2>
+            <div class="upload-container">
+                <input type="file" id="imageInput" accept="image/*" class="file-input">
+                <button id="uploadButton" class="action-button">Upload Image</button>
+                <div id="uploadStatus" class="status-message"></div>
+                <div id="imagePreview" class="image-preview" style="display: none;">
+                    <img id="previewImage" src="" alt="Preview">
+                    <p id="imageIdDisplay" class="image-id"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classification Section -->
+        <section class="dashboard-section">
+            <h2 class="section-title">🔍 Classify Image</h2>
+            <div class="classify-container">
+                <input 
+                    type="number" 
+                    id="classifyImageId" 
+                    placeholder="Enter Image ID" 
+                    class="number-input"
+                >
+                <button id="classifyButton" class="action-button">Classify Image</button>
+                <div id="classificationResult" class="result-box" style="display: none;">
+                    <div class="result-label">
+                        <strong>Label:</strong> <span id="classificationLabel"></span>
+                    </div>
+                    <div class="result-confidence">
+                        <strong>Confidence:</strong> <span id="classificationConfidence"></span>%
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semantic Search Section -->
+        <section class="dashboard-section">
+            <h2 class="section-title">🔎 Semantic Search</h2>
+            <div class="search-container">
+                <div class="search-input-group">
+                    <input 
+                        type="text" 
+                        id="searchQuery" 
+                        placeholder="Search images by description (e.g., 'a dog', 'person smiling')" 
+                        class="search-input"
+                    >
+                    <input 
+                        type="number" 
+                        id="topK" 
+                        value="5" 
+                        min="1" 
+                        max="20" 
+                        class="number-input-small"
+                        title="Number of results"
+                    >
+                    <button id="searchButton" class="action-button">Search</button>
+                </div>
+                <div id="searchStatus" class="status-message"></div>
+                <div id="searchResults" class="results-grid"></div>
+            </div>
+        </section>
+
+        <!-- Search History Section -->
+        <section class="dashboard-section">
+            <h2 class="section-title">📜 Search History</h2>
+            <div class="history-container">
+                <button id="loadHistoryButton" class="action-button">Load History</button>
+                <div id="historyList" class="history-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
